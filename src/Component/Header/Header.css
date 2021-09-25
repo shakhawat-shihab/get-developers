@@ -1,0 +1,32 @@
+.bg-nav{
+background-color: #231F20;
+}
+.nav-link{
+    border-radius: 5px;
+}
+.nav-link:hover{
+    background-color: #0ff7d4;
+    color: black!important
+}
+.bg-img{
+    background-image: url('../../banner-lg.jpg') ;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.font{
+    font-family: 'Poppins', sans-serif;
+}
+.txt-color{
+    color:#0ff7d4 ;
+}
+.txt-color-secondary{
+    color: #00ffd9;;
+}
+@media (max-width:600px) {
+    .bg-img{
+        background-image: url('../../banner-sm.jpg') ;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    
+}
