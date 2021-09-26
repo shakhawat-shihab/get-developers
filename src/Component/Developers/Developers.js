@@ -5,7 +5,7 @@ const Developers = (props) => {
     const { name, picture, age, company, role, salary, phone, email, address, fbUrl } = props.data;
     return (
         <div className='col'>
-            <div className='card h-100 p-2 mb-2 shadow-lg rounded bg-card'>
+            <div className='card h-100 p-2 mb-2 rounded bg-card '>
                 <div className='text-center'>
                     <img src={picture} alt="" width='100%' height='370px' className='rounded' />
                 </div>
@@ -23,8 +23,8 @@ const Developers = (props) => {
                         <i title={fbUrl} className="fab fa-facebook-square px-3 fs-4 text-primary"></i>
                     </div>
                 </div>
-                <div className=''>
-                    <button className='btn btn-dark mb-2' onClick={() => { props.eventHandler(props.data) }}>Add to Selected<i className="fas fa-check-circle ps-2 text-success fs-5"></i></button>
+                <div className='ms-auto  me-2'>
+                    <button className='btn btn-dark mb-2 ' onClick={() => { props.eventHandler(props.data) }}>Add to Selected<i className="fas fa-check-circle ps-2 text-success fs-5"></i></button>
                 </div>
             </div>
         </div >

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb, getDataFromDb, removeFromDb } from '../../dB';
 import Developers from '../Developers/Developers';
 import Selected from '../Selected/Selected';
 import './Hiring.css'
@@ -10,12 +11,27 @@ const Hiring = () => {
             .then(resp => resp.json())
             .then(json => setDevelopers(json));
     }, []);
+    useEffect(() => {
+        if (developers.length) {
+            const getSelectedId = getDataFromDb();
+            const getDeveloperfromID = [];
+            for (const key in getSelectedId) {
+                for (const x of developers) {
+                    if (x._id === key) {
+                        getDeveloperfromID.push(x);
+                    }
+                }
+            }
+            setSelectedDevelopers(getDeveloperfromID);
+        }
+    }, [developers])
     function addToList(dvlpr) {
         // is exist define if the dvlpr is already exist in  selectedDevelopers
         const isExist = selectedDevelopers.indexOf(dvlpr);
-        console.log(isExist);
+        //console.log(isExist);
         if (isExist === -1) {
             setSelectedDevelopers([...selectedDevelopers, dvlpr]);
+            addToDb(dvlpr._id);
         }
     }
     function deleteFromList(dvlpr) {
@@ -27,6 +43,7 @@ const Hiring = () => {
             }
             else {
                 //this user is clicked for delete so don't them in array
+                removeFromDb(x._id);
                 return false;
             }
         });
@@ -36,7 +53,7 @@ const Hiring = () => {
         <div>
             <h1 className='text-center text-primary pt-4 pb-4 m-0 bg-light fw-bold'>Select Developers and Hire... </h1>
             <div className='row g-0 border-top'>
-                <div className='col-lg-9 col-md-8  col-sm-8 col-7 border-end m-0'>
+                <div className='col-lg-9 col-md-8  col-sm-8 col-7 border-end m-0 mb-4'>
                     <div className='row row-cols-lg-3 row-cols-md-2 row-cols-1 px-md-3 px-2 py-2 g-3'>
                         {
                             developers.map(x => <Developers data={x} key={x._id} eventHandler={addToList}  ></Developers>)

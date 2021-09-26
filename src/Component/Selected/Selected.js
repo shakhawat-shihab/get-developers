@@ -20,7 +20,7 @@ const Selected = (props) => {
                         </tr>
                         <tr>
                             <td className='fs-6 fw-bold'>Total Estimated Cost:  </td>
-                            <td className='fs-5 text-right'>{totalSalary}/-</td>
+                            <td className='fs-5 text-right'>{totalSalary} ৳</td>
                         </tr>
                     </tbody>
                     <tfoot></tfoot>
@@ -38,7 +38,7 @@ const Selected = (props) => {
                             <div className='col-md-6 ps-2'>
                                 <h5>{name}</h5>
                                 <h6><small>{role}</small></h6>
-                                <h6><small>{salary} /-</small></h6>
+                                <h6><small>{salary} ৳</small></h6>
                             </div>
                             <div className='col-md-3 ps-2 d-flex align-items-center'>
                                 <button className='btn btn-dark' onClick={() => { props.eventHandler(dvlpr) }}>
