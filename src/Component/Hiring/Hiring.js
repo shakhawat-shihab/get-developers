@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Developers from '../Developers/Developers';
 import Selected from '../Selected/Selected';
-
+import './Hiring.css'
 const Hiring = () => {
     const [developers, setDevelopers] = useState([]);
     const [selectedDevelopers, setSelectedDevelopers] = useState([]);
@@ -11,23 +11,31 @@ const Hiring = () => {
             .then(json => setDevelopers(json));
     }, []);
     function addToList(dvlpr) {
-        console.log(dvlpr);
-        let flag = 1;
-        developers.forEach(element => {
-            if (element._id === dvlpr._id) {
-                //this person is already chosen, so no more add
-                //flag=0 means this person will not be added
-                flag = 0;
+        // is exist define if the dvlpr is already exist in  selectedDevelopers
+        const isExist = selectedDevelopers.indexOf(dvlpr);
+        console.log(isExist);
+        if (isExist === -1) {
+            setSelectedDevelopers([...selectedDevelopers, dvlpr]);
+        }
+    }
+    function deleteFromList(dvlpr) {
+        let newArr = [];
+        newArr = selectedDevelopers.filter(x => {
+            if (x._id !== dvlpr._id) {
+                //this user is not clicked for delete so add them in array
+                return true;
             }
-            if (flag === 1) {
-                setSelectedDevelopers([...selectedDevelopers, dvlpr]);
+            else {
+                //this user is clicked for delete so don't them in array
+                return false;
             }
         });
-
+        setSelectedDevelopers(newArr);
     }
     return (
         <div>
-            <div className='row g-0'>
+            <h1 className='text-center text-primary pt-4 pb-4 m-0 bg-light fw-bold'>Select Developers and Hire... </h1>
+            <div className='row g-0 border-top'>
                 <div className='col-lg-9 col-md-8  col-sm-8 col-7 border-end m-0'>
                     <div className='row row-cols-lg-3 row-cols-md-2 row-cols-1 px-md-3 px-2 py-2 g-3'>
                         {
@@ -36,11 +44,11 @@ const Hiring = () => {
                     </div>
                 </div>
                 <div className='col-lg-3 col-md-4 col-sm-4 col-5'>
-                    <h3>Selected Person</h3>
-                    <div className='mx-md-3 mx-2'>
-                        {
+                    <div className=''>
+                        {/* {
                             selectedDevelopers.map(x => <Selected data={x} key={x._id}   ></Selected>)
-                        }
+                        } */}
+                        <Selected data={selectedDevelopers} eventHandler={deleteFromList}  ></Selected>
                     </div>
                 </div>
             </div>
