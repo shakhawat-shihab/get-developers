@@ -7,7 +7,7 @@ const Developers = (props) => {
         <div className='col'>
             <div className='card h-100 p-2 mb-2 rounded bg-card '>
                 <div className='text-center'>
-                    <img src={picture} alt="" width='100%' height='370px' className='rounded' />
+                    <img src={picture} alt="developer" width='100%' height='370px' className='rounded' />
                 </div>
                 <div className='py-3 px-2 card-body' >
                     <h5 className='fw-bold text-primary '>{name}</h5>

@@ -33,7 +33,7 @@ const Selected = (props) => {
                     return (
                         <div className='row g-0 py-2 border-bottom px-md-3 px-2' key={_id}>
                             <div className='col-md-3'>
-                                <img src={picture} alt="" className='rounded' width='100%' />
+                                <img src={picture} alt="developer" className='rounded' width='100%' />
                             </div>
                             <div className='col-md-6 ps-2'>
                                 <h5>{name}</h5>
@@ -49,6 +49,13 @@ const Selected = (props) => {
                     )
                 })
             }
+            <div className='text-center pt-4'>
+                <button className='btn btn-dark w-50 '>
+                    Hire Now
+                    <i className="fas fa-cart-arrow-down ps-2 text-warning fs-6"></i>
+                </button>
+            </div>
+
 
         </div>
     );
