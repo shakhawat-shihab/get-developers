@@ -37,7 +37,7 @@ const Header = () => {
                 <div className=' ms-md-5 ps-md-5 ms-2 ps-2 txt-color '  >
                     <h2 className='fw-bold my-4 '>Make Your Team.</h2>
                     <h3 className=' my-3'>Hire Experts from our Website and <br /> <span className=' fw-bold txt-color-secondary'> reign the world of programming.</span> </h3>
-                    <h4>Your Budget is 400000. </h4>
+                    <h4>Your Budget is 500000. </h4>
                 </div>
             </div>
 
